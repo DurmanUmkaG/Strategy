@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Strategy.Domain.Models
 {
-    public class BaseUnit: Base
+    public class Base
     {
-        public BaseUnit(Player player)
-        {
-            Player = player;
-        }
-        public Player Player { get; }
+        public int X { get; set; }
+
+        public int Y { get; set; }
     }
 }

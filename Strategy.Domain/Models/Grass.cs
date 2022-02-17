@@ -3,21 +3,7 @@
     /// <summary>
     /// Проходимая поверхность на земле.
     /// </summary>
-    public sealed class Grass
+    public sealed class Grass : BaseMapObject
     {
-        /// <inheritdoc />
-        public Grass()
-        {
-        }
-
-        /// <summary>
-        /// Координата x травы на карте.
-        /// </summary>
-        public int X { get; set; }
-
-        /// <summary>
-        /// Координата y травы на карте.
-        /// </summary>
-        public int Y { get; set; }
     }
 }

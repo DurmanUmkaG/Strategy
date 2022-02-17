@@ -36,37 +36,9 @@ namespace Strategy.Domain
         /// </summary>
         /// <param name="o">Координаты объекта, которые необходимо получить.</param>
         /// <returns>Координата x, координата y.</returns>
-        public Coordinates GetObjectCoordinates(object o)
+        public Coordinates GetObjectCoordinates(Base o)
         {
-            if (o is Archer a)
-            {
-                return new Coordinates(a.X, a.Y);
-            }
-
-            if (o is Catapult c)
-            {
-                return new Coordinates(c.X, c.Y);
-            }
-
-            if (o is Horseman h)
-            {
-                return new Coordinates(h.X, h.Y);
-            }
-
-            if (o is Swordsman s)
-            {
-                return new Coordinates(s.X, s.Y);
-            }
-
-            if (o is Grass g)
-            {
-                return new Coordinates(g.X, g.Y);
-            }
-
-            if (o is Water w)
-            {
-                return new Coordinates(w.X, w.Y);
-            }
+            return new Coordinates(o.X, o.Y);
 
             throw new ArgumentException("Неизвестный тип");
         }
@@ -188,7 +160,7 @@ namespace Strategy.Domain
         /// <see langvalue="true" />, если атака возможна
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        public bool CanAttackUnit(object au, object tu)
+        public bool CanAttackUnit(Base au, Base tu)
         {
             var cr = GetObjectCoordinates(tu);
             Player ptu;
@@ -268,7 +240,7 @@ namespace Strategy.Domain
         /// </summary>
         /// <param name="au">Юнит, который собирается совершить атаку.</param>
         /// <param name="tu">Юнит, который является целью.</param>
-        public void AttackUnit(object au, object tu)
+        public void AttackUnit(Base au, Base tu)
         {
             if (!CanAttackUnit(au, tu))
                 return;
