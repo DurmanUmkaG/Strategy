@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain.Tests\\Strategy.Domain.Tests.csproj": {}
+  },
+  "projects": {
+    "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain.Tests\\Strategy.Domain.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain.Tests\\Strategy.Domain.Tests.csproj",
+        "projectName": "Strategy.Domain.Tests",
+        "projectPath": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain.Tests\\Strategy.Domain.Tests.csproj",
+        "packagesPath": "C:\\Users\\toppo\\.nuget\\packages\\",
+        "outputPath": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\toppo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain\\Strategy.Domain.csproj": {
+                "projectPath": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain\\Strategy.Domain.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain\\Strategy.Domain.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain\\Strategy.Domain.csproj",
+        "projectName": "Strategy.Domain",
+        "projectPath": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain\\Strategy.Domain.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    }
+  }
+}

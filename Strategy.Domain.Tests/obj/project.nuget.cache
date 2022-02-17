@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0S3eGZB8oVpW6Ed0kyhthlDceSLcLJnK7ZGTtDOovVm/gvesMn4nhKrBUW87oBhlje+uL9IFoFH5CN/X2FRBRA==",
+  "success": true,
+  "projectFilePath": "D:\\OSU\\OOP\\lab1\\lab1\\Strategy\\Strategy.Domain.Tests\\Strategy.Domain.Tests.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\toppo\\.nuget\\packages\\nunit\\3.13.2\\nunit.3.13.2.nupkg.sha512",
+    "C:\\Users\\toppo\\.nuget\\packages\\nunit3testadapter\\4.2.1\\nunit3testadapter.4.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}
