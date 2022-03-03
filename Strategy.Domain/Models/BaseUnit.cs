@@ -16,6 +16,11 @@ namespace Strategy.Domain.Models
             Player = player;
         }
 
+        public  bool IsEqualCoordinates(int x, int y)
+        {
+            return X == x && Y == y;
+        }
+
         public bool CanMove(int x, int y)
         {
             if (Math.Abs(X - x) > CanMoveValue || Math.Abs(Y - y) > CanMoveValue)

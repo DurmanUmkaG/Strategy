@@ -55,31 +55,6 @@ namespace Strategy.Domain
         /// </returns>
         public bool CanMoveUnit(BaseUnit u, int x, int y)
         {
-            //if (u is Archer a)
-            //{
-            //    if (Math.Abs(a.X - x) > 3 || Math.Abs(a.Y - y) > 3)
-            //        return false;
-            //}
-            //if (u is Catapult c)
-            //{
-            //    if (Math.Abs(c.X - x) > 1 || Math.Abs(c.Y - y) > 1)
-            //        return false;
-            //}
-            //else if (u is Horseman h)
-            //{
-            //    if (Math.Abs(h.X - x) > 10 || Math.Abs(h.Y - y) > 10)
-            //        return false;
-            //}
-            //else if (u is Swordsman s)
-            //{
-            //    if (Math.Abs(s.X - x) > 5 || Math.Abs(s.Y - y) > 5)
-            //        return false;
-            //}
-            //else if (u is Archer)
-            //{
-            //    return u.CanMove(x, y);
-            //}
-
             if (!u.CanMove(x, y))
             {
                 return false;
@@ -96,28 +71,7 @@ namespace Strategy.Domain
 
             foreach (BaseUnit u1 in _map.Units)
             {
-                if (u1 is Archer a1)
-                {
-                    if (a1.X == x && a1.Y == y)
-                        return false;
-                }
-                else if (u1 is Catapult c1)
-                {
-                    if (c1.X == x && c1.Y == y)
-                        return false;
-                }
-                else if (u1 is Horseman h1)
-                {
-                    if (h1.X == x && h1.Y == y)
-                        return false;
-                }
-                else if (u1 is Swordsman s1)
-                {
-                    if (s1.X == x && s1.Y == y)
-                        return false;
-                }
-                else
-                    throw new ArgumentException("Неизвестный тип");
+                if (u1.IsEqualCoordinates(x, y)) return false;
             }
 
             return true;
