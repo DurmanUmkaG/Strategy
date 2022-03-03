@@ -184,29 +184,12 @@ namespace Strategy.Domain
         /// Инициализировать здоровье юнита.
         /// </summary>
         /// <param name="u">Юнит.</param>
-        private void InitializeUnitHp(object u)
+        private void InitializeUnitHp(BaseUnit u)
         {
             if (_hp.ContainsKey(u))
                 return;
 
-            if (u is Archer)
-            {
-                _hp.Add(u, 50);
-            }
-            else if (u is Catapult)
-            {
-                _hp.Add(u, 70);
-            }
-            else if (u is Horseman)
-            {
-                _hp.Add(u, 200);
-            }
-            else if (u is Swordsman)
-            {
-                _hp.Add(u, 100);
-            }
-            else
-                throw new ArgumentException("Неизвестный тип");
+            _hp.Add(u, u.HP);
         }
     }
 }

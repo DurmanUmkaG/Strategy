@@ -10,6 +10,7 @@ namespace Strategy.Domain.Models
         protected override int CanMoveValue { get; } = 10;
         public override int CanAttackValue { get; } = 1;
         public override int Damage { get; } = 75;
+        public override int HP { get; } = 200;
         public override ImageSource SourceImage { get; } = BuildSourceFromPath("Resources/Units/Horseman.png");
         public Horseman(Player player) : base(player)
         {

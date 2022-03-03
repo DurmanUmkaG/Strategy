@@ -14,6 +14,7 @@ namespace Strategy.Domain.Models
         protected abstract int CanMoveValue { get; }
         public abstract int CanAttackValue { get; }
         public abstract int Damage { get; }
+        public abstract int HP { get; }
         public static ImageSource DeadUnitSource { get; } = BuildSourceFromPath("Resources/Units/Dead.png");
         protected BaseUnit(Player player)
         {
