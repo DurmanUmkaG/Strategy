@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Strategy.Domain.Models
 {
-    public abstract class BaseUnit: Base
+    public abstract class BaseUnit : Base
     {
         public Player Player { get; }
 
         protected abstract int CanMoveValue { get; }
+        public abstract int CanAttackValue { get; }
         public BaseUnit(Player player)
         {
             Player = player;
         }
 
-        public  bool IsEqualCoordinates(int x, int y)
+        public bool IsEqualCoordinates(int x, int y)
         {
             return X == x && Y == y;
         }

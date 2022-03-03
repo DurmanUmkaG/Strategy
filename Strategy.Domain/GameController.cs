@@ -90,29 +90,6 @@ namespace Strategy.Domain
 
             u.X = x;
             u.Y = y;
-
-            //if (u is Archer a)
-            //{
-            //    a.X = x;
-            //    a.Y = y;
-            //}
-            //else if (u is Catapult c)
-            //{
-            //    c.X = x;
-            //    c.Y = y;
-            //}
-            //else if (u is Horseman h)
-            //{
-            //    h.X = x;
-            //    h.Y = y;
-            //}
-            //else if (u is Swordsman s)
-            //{
-            //    s.X = x;
-            //    s.Y = y;
-            //}
-            //else
-            //    throw new ArgumentException("Неизвестный тип");
         }
 
         /// <summary>
@@ -124,76 +101,31 @@ namespace Strategy.Domain
         /// <see langvalue="true" />, если атака возможна
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        public bool CanAttackUnit(Base au, Base tu)
+        public bool CanAttackUnit(BaseUnit au, BaseUnit tu)
         {
             var cr = GetObjectCoordinates(tu);
             Player ptu;
-            if (tu is Archer a)
-            {
-                ptu = a.Player;
-            }
-            else if (tu is Catapult c)
-            {
-                ptu = c.Player;
-            }
-            else if (tu is Horseman h)
-            {
-                ptu = h.Player;
-            }
-            else if (tu is Swordsman s)
-            {
-                ptu = s.Player;
-            }
-            else
-                throw new ArgumentException("Неизвестный тип");
+            ptu = tu.Player;
 
             if (IsDead(tu))
                 return false;
 
-            if (au is Archer a1)
+            if (au.Player == ptu)
             {
-                if (a1.Player == ptu)
-                    return false;
-
-                var dx = a1.X - cr.X;
-                var dy = a1.Y - cr.Y;
-
-                return dx >= -5 && dx <= 5 && dy >= -5 && dy <= 5;
+                return false;
             }
 
-            if (au is Catapult c1)
+            var dx = au.X - cr.X;
+            var dy = au.Y - cr.Y;
+
+            if (au is RangeUnit r)
             {
-                if (c1.Player == ptu)
-                    return false;
-
-                var dx = c1.X - cr.X;
-                var dy = c1.Y - cr.Y;
-
-                return dx >= -10 && dx <= 10 && dy >= -10 && dy <= 10;
+                return r.CanAttack(dx, dy);
             }
 
-            if (au is Horseman h1)
+            if (au is MeleeUnit m)
             {
-                if (h1.Player == ptu)
-                    return false;
-
-                var dx = h1.X - cr.X;
-                var dy = h1.Y - cr.Y;
-
-                return (dx == -1 || dx == 0 || dx == 1) &&
-                       (dy == -1 || dy == 0 || dy == 1);
-            }
-
-            if (au is Swordsman s1)
-            {
-                if (s1.Player == ptu)
-                    return false;
-
-                var dx = s1.X - cr.X;
-                var dy = s1.Y - cr.Y;
-
-                return (dx == -1 || dx == 0 || dx == 1) &&
-                       (dy == -1 || dy == 0 || dy == 1);
+                return m.CanAttack(dx, dy);
             }
 
             throw new ArgumentException("Неизвестный тип");
@@ -204,7 +136,7 @@ namespace Strategy.Domain
         /// </summary>
         /// <param name="au">Юнит, который собирается совершить атаку.</param>
         /// <param name="tu">Юнит, который является целью.</param>
-        public void AttackUnit(Base au, Base tu)
+        public void AttackUnit(BaseUnit au, BaseUnit tu)
         {
             if (!CanAttackUnit(au, tu))
                 return;

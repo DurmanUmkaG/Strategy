@@ -578,7 +578,7 @@ namespace Strategy.Domain.Tests
         /// Проверка не точная. Считается какое количество ударов нужно, чтобы убить противника.
         /// Смерть считается по тому, что больше нельзя атаковать. В общем случае, такая проверка работоспособна.
         /// </remarks>
-        private static int GetAttacksCount(GameController gameController, Base attackerUnit, Base targetUnit)
+        private static int GetAttacksCount(GameController gameController, BaseUnit attackerUnit, BaseUnit targetUnit)
         {
             var count = 0;
             while (gameController.CanAttackUnit(attackerUnit, targetUnit))
