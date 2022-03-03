@@ -88,28 +88,31 @@ namespace Strategy.Domain
             if (!CanMoveUnit(u, x, y))
                 return;
 
-            if (u is Archer a)
-            {
-                a.X = x;
-                a.Y = y;
-            }
-            else if (u is Catapult c)
-            {
-                c.X = x;
-                c.Y = y;
-            }
-            else if (u is Horseman h)
-            {
-                h.X = x;
-                h.Y = y;
-            }
-            else if (u is Swordsman s)
-            {
-                s.X = x;
-                s.Y = y;
-            }
-            else
-                throw new ArgumentException("Неизвестный тип");
+            u.X = x;
+            u.Y = y;
+
+            //if (u is Archer a)
+            //{
+            //    a.X = x;
+            //    a.Y = y;
+            //}
+            //else if (u is Catapult c)
+            //{
+            //    c.X = x;
+            //    c.Y = y;
+            //}
+            //else if (u is Horseman h)
+            //{
+            //    h.X = x;
+            //    h.Y = y;
+            //}
+            //else if (u is Swordsman s)
+            //{
+            //    s.X = x;
+            //    s.Y = y;
+            //}
+            //else
+            //    throw new ArgumentException("Неизвестный тип");
         }
 
         /// <summary>
