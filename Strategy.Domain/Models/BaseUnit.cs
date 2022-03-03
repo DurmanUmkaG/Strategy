@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace Strategy.Domain.Models
 {
-    public class BaseUnit: Base
+    public abstract class BaseUnit: Base
     {
+        public Player Player { get; }
+
+        protected abstract int CanMoveValue { get; }
         public BaseUnit(Player player)
         {
             Player = player;
         }
-        public Player Player { get; }
+
+        public bool CanMove(int x, int y)
+        {
+            if (Math.Abs(X - x) > CanMoveValue || Math.Abs(Y - y) > CanMoveValue)
+                return false;
+            return true;
+        }
     }
 }

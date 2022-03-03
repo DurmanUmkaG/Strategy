@@ -5,9 +5,11 @@
     /// </summary>
     public sealed class Archer : BaseUnit
     {
-        /// <inheritdoc />
+        protected override int CanMoveValue { get; } = 3;
         public Archer(Player player) : base(player)
         {
+
         }
+
     }
 }

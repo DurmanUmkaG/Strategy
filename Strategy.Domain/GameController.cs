@@ -53,33 +53,40 @@ namespace Strategy.Domain
         /// <see langvalue="true" />, если юнит может переместиться
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        public bool CanMoveUnit(object u, int x, int y)
+        public bool CanMoveUnit(BaseUnit u, int x, int y)
         {
-            if (u is Archer a)
+            //if (u is Archer a)
+            //{
+            //    if (Math.Abs(a.X - x) > 3 || Math.Abs(a.Y - y) > 3)
+            //        return false;
+            //}
+            //if (u is Catapult c)
+            //{
+            //    if (Math.Abs(c.X - x) > 1 || Math.Abs(c.Y - y) > 1)
+            //        return false;
+            //}
+            //else if (u is Horseman h)
+            //{
+            //    if (Math.Abs(h.X - x) > 10 || Math.Abs(h.Y - y) > 10)
+            //        return false;
+            //}
+            //else if (u is Swordsman s)
+            //{
+            //    if (Math.Abs(s.X - x) > 5 || Math.Abs(s.Y - y) > 5)
+            //        return false;
+            //}
+            //else if (u is Archer)
+            //{
+            //    return u.CanMove(x, y);
+            //}
+
+            if (!u.CanMove(x, y))
             {
-                if (Math.Abs(a.X - x) > 3 || Math.Abs(a.Y - y) > 3)
-                    return false;
+                return false;
             }
-            else if (u is Catapult c)
-            {
-                if (Math.Abs(c.X - x) > 1 || Math.Abs(c.Y - y) > 1)
-                    return false;
-            }
-            else if (u is Horseman h)
-            {
-                if (Math.Abs(h.X - x) > 10 || Math.Abs(h.Y - y) > 10)
-                    return false;
-            }
-            else if (u is Swordsman s)
-            {
-                if (Math.Abs(s.X - x) > 5 || Math.Abs(s.Y - y) > 5)
-                    return false;
-            }
-            else
-                throw new ArgumentException("Неизвестный тип");
 
 
-            foreach (object g in _map.Ground)
+            foreach (BaseMapObject g in _map.Ground)
             {
                 if (g is Water w && w.X == x && w.Y == y)
                 {
@@ -87,7 +94,7 @@ namespace Strategy.Domain
                 }
             }
 
-            foreach (object u1 in _map.Units)
+            foreach (BaseUnit u1 in _map.Units)
             {
                 if (u1 is Archer a1)
                 {
@@ -122,7 +129,7 @@ namespace Strategy.Domain
         /// <param name="u">Юнит.</param>
         /// <param name="x">Координата X клетки.</param>
         /// <param name="y">Координата Y клетки.</param>
-        public void MoveUnit(object u, int x, int y)
+        public void MoveUnit(BaseUnit u, int x, int y)
         {
             if (!CanMoveUnit(u, x, y))
                 return;
