@@ -15,8 +15,12 @@ namespace Strategy.Domain
 
         public bool CanAttack(int dx, int dy)
         {
-            return (dx == -CanAttackValue || dx == 0 || dx == CanAttackValue) &&
-                (dy == -CanAttackValue || dy == 0 || dy == CanAttackValue);
+            return IsMelee(dx, dy);
+        }
+
+        public int AttackUnit()
+        {
+            return Damage;
         }
     }
 }

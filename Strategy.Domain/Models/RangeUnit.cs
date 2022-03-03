@@ -17,5 +17,11 @@ namespace Strategy.Domain
         {
             return dx >= -CanAttackValue && dx <= CanAttackValue && dy >= -CanAttackValue && dy <= CanAttackValue;
         }
+
+        public int AttackUnit(int dx, int dy)
+        {
+            if (IsMelee(dx, dy)) return Damage / 2;
+            return Damage;
+        }
     }
 }

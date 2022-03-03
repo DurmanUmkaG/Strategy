@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Strategy.Domain.Models
 {
-    public class BaseMapObject: Base
+    public abstract class BaseMapObject: Base
     {
-        public BaseMapObject()
+        protected BaseMapObject()
         {
 
         }

@@ -16,14 +16,6 @@ namespace Strategy.Domain
         // Очки жизни каждого юнита.
         private readonly Dictionary<object, int> _hp = new Dictionary<object, int>();
 
-        private readonly ImageSource _archerSource = BuildSourceFromPath("Resources/Units/Archer.png");
-        private readonly ImageSource _catapultSource = BuildSourceFromPath("Resources/Units/Catapult.png");
-        private readonly ImageSource _horsemanSource = BuildSourceFromPath("Resources/Units/Horseman.png");
-        private readonly ImageSource _swordsmanSource = BuildSourceFromPath("Resources/Units/Swordsman.png");
-        private readonly ImageSource _deadUnitSource = BuildSourceFromPath("Resources/Units/Dead.png");
-        private readonly ImageSource _grassSource = BuildSourceFromPath("Resources/Ground/Grass.png");
-        private readonly ImageSource _waterSource = BuildSourceFromPath("Resources/Ground/Water.png");
-
         /// <inheritdoc />
         public GameController(Map map)
         {
@@ -146,39 +138,15 @@ namespace Strategy.Domain
             var cr = GetObjectCoordinates(tu);
             int d = 0;
 
-            if (au is Archer a)
+            if (au is RangeUnit r)
             {
-                d = 50;
-
-                var dx = a.X - cr.X;
-                var dy = a.Y - cr.Y;
-
-                if ((dx == -1 || dx == 0 || dx == 1) &&
-                    (dy == -1 || dy == 0 || dy == 1))
-                {
-                    d /= 2;
-                }
+                var dx = r.X - cr.X;
+                var dy = r.Y - cr.Y;
+                d = r.AttackUnit(dx, dy);
             }
-            else if (au is Catapult c)
+            else if (au is MeleeUnit m)
             {
-                d = 100;
-
-                var dx = c.X - cr.X;
-                var dy = c.Y - cr.Y;
-
-                if ((dx == -1 || dx == 0 || dx == 1) &&
-                    (dy == -1 || dy == 0 || dy == 1))
-                {
-                    d /= 2;
-                }
-            }
-            else if (au is Horseman)
-            {
-                d = 75;
-            }
-            else if (au is Swordsman)
-            {
-                d = 50;
+                d = m.AttackUnit();
             }
             else
                 throw new ArgumentException("Неизвестный тип");
@@ -189,51 +157,10 @@ namespace Strategy.Domain
         /// <summary>
         /// Получить изображение объекта.
         /// </summary>
-        public ImageSource GetObjectSource(object o)
+        public ImageSource GetObjectSource(Base o)
         {
-            if (o is Archer)
-            {
-                if (IsDead(o))
-                    return _deadUnitSource;
-
-                return _archerSource;
-            }
-
-            if (o is Catapult)
-            {
-                if (IsDead(o))
-                    return _deadUnitSource;
-
-                return _catapultSource;
-            }
-
-            if (o is Horseman)
-            {
-                if (IsDead(o))
-                    return _deadUnitSource;
-
-                return _horsemanSource;
-            }
-
-            if (o is Swordsman)
-            {
-                if (IsDead(o))
-                    return _deadUnitSource;
-
-                return _swordsmanSource;
-            }
-
-            if (o is Grass)
-            {
-                return _grassSource;
-            }
-
-            if (o is Water)
-            {
-                return _waterSource;
-            }
-
-            throw new ArgumentException("Неизвестный тип");
+            if (o is BaseUnit bu && IsDead(bu)) return BaseUnit.DeadUnitSource; 
+            return o.SourceImage;
         }
 
         /// <summary>
@@ -244,7 +171,7 @@ namespace Strategy.Domain
         /// <see langvalue="true" />, если у юнита не осталось очков здоровья,
         /// <see langvalue="false" /> - иначе.
         /// </returns>
-        private bool IsDead(object u)
+        private bool IsDead(BaseUnit u)
         {
             if (_hp.TryGetValue(u, out var hp))
                 return hp == 0;
@@ -280,14 +207,6 @@ namespace Strategy.Domain
             }
             else
                 throw new ArgumentException("Неизвестный тип");
-        }
-
-        /// <summary>
-        /// Получить изображение по указанному пути.
-        /// </summary>
-        private static ImageSource BuildSourceFromPath(string path)
-        {
-            return new BitmapImage(new Uri(path, UriKind.Relative));
         }
     }
 }
