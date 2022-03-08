@@ -31,8 +31,6 @@ namespace Strategy.Domain
         public Coordinates GetObjectCoordinates(Base o)
         {
             return new Coordinates(o.X, o.Y);
-
-            throw new ArgumentException("Неизвестный тип");
         }
 
         /// <summary>
@@ -110,17 +108,7 @@ namespace Strategy.Domain
             var dx = au.X - cr.X;
             var dy = au.Y - cr.Y;
 
-            if (au is RangeUnit r)
-            {
-                return r.CanAttack(dx, dy);
-            }
-
-            if (au is MeleeUnit m)
-            {
-                return m.CanAttack(dx, dy);
-            }
-
-            throw new ArgumentException("Неизвестный тип");
+            return au.CanAttack(dx, dy);
         }
 
         /// <summary>
@@ -136,20 +124,13 @@ namespace Strategy.Domain
             InitializeUnitHp(tu);
             var thp = _hp[tu];
             var cr = GetObjectCoordinates(tu);
-            int d = 0;
 
-            if (au is RangeUnit r)
-            {
-                var dx = r.X - cr.X;
-                var dy = r.Y - cr.Y;
-                d = r.AttackUnit(dx, dy);
-            }
-            else if (au is MeleeUnit m)
-            {
-                d = m.AttackUnit();
-            }
-            else
-                throw new ArgumentException("Неизвестный тип");
+
+
+            var dx = au.X - cr.X;
+            var dy = au.Y - cr.Y;
+            int d = au.AttackUnit(dx, dy);
+
 
             _hp[tu] = Math.Max(thp - d, 0);
         }
@@ -159,7 +140,7 @@ namespace Strategy.Domain
         /// </summary>
         public ImageSource GetObjectSource(Base o)
         {
-            if (o is BaseUnit bu && IsDead(bu)) return BaseUnit.DeadUnitSource; 
+            if (o is BaseUnit bu && IsDead(bu)) return BaseUnit.DeadUnitSource;
             return o.SourceImage;
         }
 

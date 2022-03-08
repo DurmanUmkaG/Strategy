@@ -13,12 +13,12 @@ namespace Strategy.Domain
         {
         }
 
-        public bool CanAttack(int dx, int dy)
+        public override bool CanAttack(int dx, int dy)
         {
             return IsMelee(dx, dy);
         }
 
-        public int AttackUnit()
+        public override int AttackUnit(int x, int y)
         {
             return Damage;
         }

@@ -15,6 +15,10 @@ namespace Strategy.Domain.Models
         public abstract int CanAttackValue { get; }
         public abstract int Damage { get; }
         public abstract int HP { get; }
+
+        public abstract bool CanAttack(int x, int y);
+
+        public abstract int AttackUnit(int x, int y);
         public static ImageSource DeadUnitSource { get; } = BuildSourceFromPath("Resources/Units/Dead.png");
         protected BaseUnit(Player player)
         {
@@ -26,9 +30,7 @@ namespace Strategy.Domain.Models
         }
         public bool CanMove(int x, int y)
         {
-            if (Math.Abs(X - x) > CanMoveValue || Math.Abs(Y - y) > CanMoveValue)
-                return false;
-            return true;
+            return !(Math.Abs(X - x) > CanMoveValue || Math.Abs(Y - y) > CanMoveValue);
         }
         public bool IsMelee(int dx, int dy)
         {

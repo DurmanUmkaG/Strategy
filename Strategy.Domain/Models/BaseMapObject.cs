@@ -8,9 +8,6 @@ namespace Strategy.Domain.Models
 {
     public abstract class BaseMapObject: Base
     {
-        protected BaseMapObject()
-        {
 
-        }
     }
 }
